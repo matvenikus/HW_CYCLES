@@ -10,12 +10,13 @@ import org.junit.jupiter.api.Test;
 public class WorkerCalcTest {
     @ParameterizedTest
     @CsvSource({
-            "10_000,3_000, 20_000"
+            "3,10000,3000,20000",
+            "2,100000,60000,150000"
     })
-    public void test() {
+    public void test(int expected, int income, int expences, int threshold ) {
         WorkerCalc service = new WorkerCalc();
-        int expected = 3;
-        int actual = service.calculate(10_000, 3_000, 20_000);
+
+        int actual = service.calculate(income, expences,threshold);
 
         Assertions.assertEquals(expected,actual);
     }
